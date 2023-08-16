@@ -13,8 +13,8 @@ POST {{baseUrl}}/sensors/
 Content-Type: application/json
 
 {
-  "name": "sensor1",
-  "description": "Датчик в комнате 1"
+  "name": "sensor3",
+  "description": "Датчик в комнате 3"
 }
 
 ###
@@ -24,7 +24,8 @@ PATCH {{baseUrl}}/sensors/1/
 Content-Type: application/json
 
 {
-  "description": "Перенес датчик на балкон"
+  "name": "sensor1",
+  "description": "Комната 1"
 }
 
 ###
@@ -34,15 +35,13 @@ POST {{baseUrl}}/measurements/
 Content-Type: application/json
 
 {
-  "sensor": 1,
-  "temperature": 22.3
+  "sensor": 3,
+  "temperature": 18.1
 }
 
 ###
 
 # получение информации по датчику
-GET {{baseUrl}}/sensors/1/
+GET {{baseUrl}}/sensors/3/
 Content-Type: application/json
 
-###
-GET http://localhost:8000/api/sensors/

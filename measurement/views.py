@@ -2,32 +2,23 @@
 # TODO: ListCreateAPIView, RetrieveUpdateAPIView, CreateAPIView
 
 from django.shortcuts import render
-from rest_framework.decorators import api_view
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 
 from measurement.models import Measurement, Sensor
 from measurement.serializers import SensorSerializer
 from measurement.serializers import MeasurementSerializer, SensorDetailSerializer
 
-
-# class SensorViewSet(RetrieveAPIView):
-#     queryset = Sensor.objects.all()
-#     serializer_class = SensorSerializer
-
-@api_view(['GET'])
-def demo(request):
-    data = {'message': 'Hello!'}
-    return Response(data)
-
-class SensorViewSet(ListAPIView):
+class SensorViewSet(ListCreateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
 
-class MeasuremenViewSet(ListAPIView):
-    queryset = Measurement.objects.all()
+class SensorUpdateSet(RetrieveUpdateAPIView):
+    queryset = Sensor.objects.all()
     serializer_class = SensorDetailSerializer
+
+class MeasuremenViewSet(ListCreateAPIView):
+    queryset = Measurement.objects.all()
+    serializer_class = MeasurementSerializer
 
  
 
